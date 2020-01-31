@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Adder {
+public class Adder implements Runnable {
     private String inFile;
     private String outFile;
 
@@ -27,6 +27,14 @@ public class Adder {
 
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outFile))) {
             bw.write("Total: " + total);
+        }
+    }
+
+    public void run() {
+        try {
+            doAdd();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
