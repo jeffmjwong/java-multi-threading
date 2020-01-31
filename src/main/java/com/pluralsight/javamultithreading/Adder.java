@@ -15,19 +15,18 @@ public class Adder {
         this.outFile = outFile;
     }
 
-    public void add() throws IOException {
+    public void doAdd() throws IOException {
         int total = 0;
 
-        try (BufferedReader bf = Files.newBufferedReader(Paths.get(inFile))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(inFile))) {
             String line;
-            while ((line = bf.readLine()) != null) {
-                final int number = Integer.parseInt(line);
-                total += number;
+            while ((line = br.readLine()) != null) {
+                total += Integer.parseInt(line);
             }
         }
 
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outFile))) {
-            bw.write(total);
+            bw.write("Total: " + total);
         }
     }
 }
