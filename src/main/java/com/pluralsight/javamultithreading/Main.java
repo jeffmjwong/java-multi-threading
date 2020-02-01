@@ -15,9 +15,12 @@ public class Main {
     private static void runBankAccounts() {
         ExecutorService es = Executors.newFixedThreadPool(5);
 
-        BankAccount bankAccount1 = new BankAccount(100);
-        Worker worker1 = new Worker(bankAccount1);
-        es.submit(worker1);
+        BankAccount bankAccount = new BankAccount(100);
+
+        for (int i = 0; i < 5; i++) {
+            Worker worker = new Worker(bankAccount);
+            es.submit(worker);
+        }
 
         try {
             es.shutdown();

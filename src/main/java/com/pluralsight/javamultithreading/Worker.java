@@ -11,10 +11,10 @@ public class Worker implements Runnable {
     public void run() {
         for (int i = 0; i < 10; i++) {
             final int startBalance = bankAccount.getBalance();
-            System.out.println(startBalance);
+            System.out.println("Starting balance: " + startBalance);
             bankAccount.deposit(10);
             final int endBalance = bankAccount.getBalance();
-            System.out.println(endBalance);
+            System.out.println("Ending balance: " + endBalance);
         }
     }
 }
