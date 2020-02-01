@@ -4,10 +4,27 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
-        runAdders();
+//        runAdders();
+        runBankAccounts();
+    }
+
+    private static void runBankAccounts() {
+        ExecutorService es = Executors.newFixedThreadPool(5);
+
+        BankAccount bankAccount1 = new BankAccount(100);
+        Worker worker1 = new Worker(bankAccount1);
+        es.submit(worker1);
+
+        try {
+            es.shutdown();
+            es.awaitTermination(60, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void runAdders() {
