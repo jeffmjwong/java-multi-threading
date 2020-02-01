@@ -1,12 +1,12 @@
 package com.pluralsight.javamultithreading;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.Callable;
 
-public class Adder implements Runnable {
+public class Adder implements Callable<Integer> {
     private String inFile;
     private String outFile;
 
@@ -15,7 +15,7 @@ public class Adder implements Runnable {
         this.outFile = outFile;
     }
 
-    public void doAdd() throws IOException {
+    public int doAdd() throws IOException {
         int total = 0;
 
         try (BufferedReader br = Files.newBufferedReader(Paths.get(inFile))) {
@@ -25,16 +25,10 @@ public class Adder implements Runnable {
             }
         }
 
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outFile))) {
-            bw.write("Total: " + total);
-        }
+        return total;
     }
 
-    public void run() {
-        try {
-            doAdd();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public Integer call() throws IOException {
+        return doAdd();
     }
 }
