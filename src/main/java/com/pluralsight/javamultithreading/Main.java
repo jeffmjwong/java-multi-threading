@@ -19,6 +19,9 @@ public class Main {
     private static void classInfo(Object obj) {
         Class<?> theClass = obj.getClass();
         System.out.println(theClass.getSimpleName());
+
+        Class<?> superclass = theClass.getSuperclass();
+        System.out.println(superclass.getSimpleName());
     }
 
     private static void runBankAccounts() {
