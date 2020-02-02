@@ -1,17 +1,29 @@
 package com.pluralsight.javamultithreading;
 
 public class BankAccount {
-    private int balance;
+    private final String id;
+    private int balance = 0;
 
+    public String getId() {
+        return id;
+    }
     public int getBalance() {
         return balance;
     }
 
-    public BankAccount(int balance) {
+    public BankAccount(String id) {
+        this.id = id;
+    }
+    public BankAccount(String id, int balance) {
+        this(id);
         this.balance = balance;
     }
 
     public void deposit(int amount) {
         balance += amount;
+    }
+
+    public void withdrawal(int amount) {
+        balance -= amount;
     }
 }
