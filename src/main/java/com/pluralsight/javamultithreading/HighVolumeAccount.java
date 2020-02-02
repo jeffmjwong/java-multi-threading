@@ -1,6 +1,6 @@
 package com.pluralsight.javamultithreading;
 
-public class HighVolumeAccount extends BankAccount implements Runnable {
+public final class HighVolumeAccount extends BankAccount implements Runnable {
     public HighVolumeAccount(String id) {
         super(id);
     }
