@@ -13,12 +13,16 @@ public class Main {
 //        runBankAccounts();
 
         BankAccount account1 = new BankAccount("1", 500);
-//        Class accountClass = account1.getClass();
-        Class accountClass = BankAccount.class;
-        System.out.println(accountClass.getSimpleName());
-        System.out.println(Arrays.toString(accountClass.getConstructors()));
-        System.out.println(Arrays.toString(accountClass.getDeclaredFields()));
-        System.out.println(Arrays.toString(accountClass.getMethods()));
+        doWork(account1);
+    }
+
+    private static void doWork(Object obj) {
+        Class<?> c = obj.getClass();
+        showName(c);
+    }
+
+    private static void showName(Class<?> theClass) {
+        System.out.println(theClass.getSimpleName());
     }
 
     private static void runBankAccounts() {
