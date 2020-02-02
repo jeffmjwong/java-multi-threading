@@ -14,6 +14,8 @@ public class Main {
 
         BankAccount account1 = new BankAccount("1", 500);
         doWork(account1);
+        Class<BankAccount> c = BankAccount.class;
+        showName(c);
     }
 
     private static void doWork(Object obj) {
