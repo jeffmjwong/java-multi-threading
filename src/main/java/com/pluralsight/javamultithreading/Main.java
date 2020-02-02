@@ -12,18 +12,12 @@ public class Main {
 //        runAdders();
 //        runBankAccounts();
 
-        BankAccount account1 = new BankAccount("1", 500);
-        doWork(account1);
-        Class<BankAccount> c = BankAccount.class;
-        showName(c);
+        HighVolumeAccount account = new HighVolumeAccount("1", 500);
+        classInfo(account);
     }
 
-    private static void doWork(Object obj) {
-        Class<?> c = obj.getClass();
-        showName(c);
-    }
-
-    private static void showName(Class<?> theClass) {
+    private static void classInfo(Object obj) {
+        Class<?> theClass = obj.getClass();
         System.out.println(theClass.getSimpleName());
     }
 

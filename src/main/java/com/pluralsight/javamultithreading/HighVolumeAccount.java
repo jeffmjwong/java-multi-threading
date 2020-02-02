@@ -9,15 +9,21 @@ public class HighVolumeAccount extends BankAccount implements Runnable {
     }
 
     private int[] readDailyDeposits() {
-
+        return new int[]{1, 2, 3};
     }
 
     private int[] readDailyWithdrawals() {
-
+        return new int[]{1, 2, 3};
     }
 
     @Override
     public void run() {
+        for (int depositAmount : readDailyDeposits()) {
+            deposit(depositAmount);
+        }
 
+        for (int withdrawalAmount : readDailyWithdrawals()) {
+            withdrawal(withdrawalAmount);
+        }
     }
 }
