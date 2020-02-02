@@ -1,6 +1,6 @@
 package com.pluralsight.javamultithreading;
 
-public class HighVolumeAccount extends BankAccount {
+public class HighVolumeAccount extends BankAccount implements Runnable {
     public HighVolumeAccount(String id) {
         super(id);
     }
@@ -13,6 +13,11 @@ public class HighVolumeAccount extends BankAccount {
     }
 
     private int[] readDailyWithdrawals() {
+
+    }
+
+    @Override
+    public void run() {
 
     }
 }
