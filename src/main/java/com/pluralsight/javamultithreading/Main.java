@@ -13,7 +13,8 @@ public class Main {
 //        runBankAccounts();
 
         BankAccount account1 = new BankAccount("1", 500);
-        Class accountClass = account1.getClass();
+//        Class accountClass = account1.getClass();
+        Class accountClass = Class.forName("com.pluralsight.javamultithreading.BankAccount");
         System.out.println(accountClass.getSimpleName());
         System.out.println(Arrays.toString(accountClass.getConstructors()));
         System.out.println(Arrays.toString(accountClass.getDeclaredFields()));
