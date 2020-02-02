@@ -22,6 +22,11 @@ public class Main {
 
         Class<?> superclass = theClass.getSuperclass();
         System.out.println(superclass.getSimpleName());
+
+        Class<?>[] interfaces = theClass.getInterfaces();
+        for (Class<?> interfaceInstance : interfaces) {
+            System.out.println(interfaceInstance.getSimpleName());
+        }
     }
 
     private static void runBankAccounts() {
