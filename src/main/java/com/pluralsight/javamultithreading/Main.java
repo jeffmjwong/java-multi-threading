@@ -1,5 +1,6 @@
 package com.pluralsight.javamultithreading;
 
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -13,7 +14,18 @@ public class Main {
 //        runBankAccounts();
 
         HighVolumeAccount account = new HighVolumeAccount("1", 500);
-        classInfo(account);
+//        classInfo(account);
+        typeModifiers(account);
+    }
+
+    private static void typeModifiers(Object obj) {
+        Class<?> theClass = obj.getClass();
+        final int modifiers = theClass.getModifiers();
+        System.out.println(Modifier.isFinal(modifiers));
+        System.out.println(Modifier.isPublic(modifiers));
+        System.out.println(Modifier.isPrivate(modifiers));
+        System.out.println(Modifier.isProtected(modifiers));
+        System.out.println(Modifier.isStatic(modifiers));
     }
 
     private static void classInfo(Object obj) {
