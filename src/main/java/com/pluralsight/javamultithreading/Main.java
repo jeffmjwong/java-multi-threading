@@ -20,13 +20,15 @@ public class Main {
 //        typeModifiers(account);
 //        fieldInfo(account);
 //        callGetId(account);
-        callDeposit(account, 50)
+        callDeposit(account, 50);
+        System.out.println("Balance: " + account.getBalance());
     }
 
     private static void callDeposit(Object obj, int amount) {
         try {
             Class<?> theClass = obj.getClass();
             final Method m = theClass.getMethod("deposit", int.class);
+            m.invoke(obj, amount);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
