@@ -27,6 +27,8 @@ public class Main {
         try {
             Class<?> theClass = obj.getClass();
             final Method m = theClass.getMethod("deposit", int.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
