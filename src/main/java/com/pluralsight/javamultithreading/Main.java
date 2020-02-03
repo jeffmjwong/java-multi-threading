@@ -1,5 +1,6 @@
 package com.pluralsight.javamultithreading;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
@@ -15,7 +16,15 @@ public class Main {
 
         HighVolumeAccount account = new HighVolumeAccount("1", 500);
 //        classInfo(account);
-        typeModifiers(account);
+//        typeModifiers(account);
+        fieldInfo(account);
+    }
+
+    private static void fieldInfo(Object obj) {
+        Class<?> theClass = obj.getClass();
+
+        Field[] fields = theClass.getFields();
+        System.out.println(Arrays.toString(fields));
     }
 
     private static void typeModifiers(Object obj) {
