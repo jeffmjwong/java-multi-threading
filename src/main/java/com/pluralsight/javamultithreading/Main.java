@@ -1,6 +1,7 @@
 package com.pluralsight.javamultithreading;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
@@ -17,7 +18,20 @@ public class Main {
         BankAccount account = new BankAccount("1", 500);
 //        classInfo(account);
 //        typeModifiers(account);
-        fieldInfo(account);
+//        fieldInfo(account);
+        callGetId(account);
+    }
+
+    private static void callGetId(Object obj) {
+        try {
+            Class<?> theClass = obj.getClass();
+            final Method m = theClass.getMethod("getId");
+            final Object result = m.invoke(obj);
+
+            System.out.println("Result: " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void fieldInfo(Object obj) {
