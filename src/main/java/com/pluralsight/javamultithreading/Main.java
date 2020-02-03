@@ -14,7 +14,7 @@ public class Main {
 //        runAdders();
 //        runBankAccounts();
 
-        HighVolumeAccount account = new HighVolumeAccount("1", 500);
+        BankAccount account = new BankAccount("1", 500);
 //        classInfo(account);
 //        typeModifiers(account);
         fieldInfo(account);
@@ -24,7 +24,16 @@ public class Main {
         Class<?> theClass = obj.getClass();
 
         Field[] fields = theClass.getFields();
-        System.out.println(Arrays.toString(fields));
+        displayFields(fields);
+
+        Field[] declaredFields = theClass.getDeclaredFields();
+        displayFields(declaredFields);
+    }
+
+    private static void displayFields(Field[] arr) {
+        for (Field field : arr) {
+            System.out.println(field.getName() + " : " + field.getType());
+        }
     }
 
     private static void typeModifiers(Object obj) {
