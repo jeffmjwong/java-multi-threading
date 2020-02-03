@@ -19,7 +19,12 @@ public class Main {
 //        classInfo(account);
 //        typeModifiers(account);
 //        fieldInfo(account);
-        callGetId(account);
+//        callGetId(account);
+        callDeposit(account, 50)
+    }
+
+    private static void callDeposit(Object obj, int amount) {
+
     }
 
     private static void callGetId(Object obj) {
