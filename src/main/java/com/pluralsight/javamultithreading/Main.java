@@ -26,7 +26,7 @@ public class Main {
     private static void callDeposit(Object obj, int amount) {
         try {
             Class<?> theClass = obj.getClass();
-            final Method m = theClass.getMethod("deposit");
+            final Method m = theClass.getMethod("deposit", int.class);
         }
     }
 
