@@ -1,16 +1,18 @@
 package com.pluralsight.javamultithreading;
 
-public class AccountWorker implements Runnable {
+public class AccountWorker implements Runnable, TaskWorker {
     BankAccount bankAccount;
-    HighVolumeAccount highVolumeAccount;
 
-    public AccountWorker(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-    public AccountWorker(HighVolumeAccount highVolumeAccount) {
-        this.highVolumeAccount = highVolumeAccount;
+    @Override
+    public void setTarget(Object target) {
+        if (target instanceof BankAccount) {
+            bankAccount = (BankAccount) target;
+        } else {
+            throw new IllegalArgumentException("Target is not an instance of Bank Account!");
+        }
     }
 
+    @Override
     public void doWork() {
         Thread t = new Thread(highVolumeAccount != null ? highVolumeAccount : this);
         t.start();
