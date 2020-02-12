@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) {
 //        runAdders();
 //        runBankAccounts();
 
