@@ -14,7 +14,7 @@ public class AccountWorker implements Runnable, TaskWorker {
 
     @Override
     public void doWork() {
-        Thread t = new Thread(highVolumeAccount != null ? highVolumeAccount : this);
+        Thread t = new Thread(bankAccount instanceof HighVolumeAccount ? (HighVolumeAccount) bankAccount : this);
         t.start();
     }
 
