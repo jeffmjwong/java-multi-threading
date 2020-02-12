@@ -30,12 +30,9 @@ public class Main {
     private static void startWork(String workerTypeName, Object workerTarget) {
         try {
             Class<?> workerType = Class.forName(workerTypeName);
-            Class<?> targetType = workerTarget.getClass();
-            final Constructor<?> c = workerType.getConstructor(targetType);
-            final Object worker = c.newInstance(workerTarget);
-            final Method doWork = workerType.getMethod("doWork");
-
-            doWork.invoke(worker);
+            final TaskWorker worker = (TaskWorker) workerType.newInstance();
+            worker.setTarget(workerTarget);
+            worker.doWork();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
