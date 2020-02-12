@@ -1,18 +1,19 @@
 package com.pluralsight.javamultithreading;
 
 public class AccountWorker implements Runnable {
-    BankAccount ba;
-    HighVolumeAccount hva;
+    BankAccount bankAccount;
+    HighVolumeAccount highVolumeAccount;
 
-    public AccountWorker(BankAccount ba) {
-
+    public AccountWorker(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
-    public AccountWorker(HighVolumeAccount hva) {
-
+    public AccountWorker(HighVolumeAccount highVolumeAccount) {
+        this.highVolumeAccount = highVolumeAccount;
     }
 
     public void doWork() {
-        Thread t = new Thread(hva != null ? hva : this);
+        Thread t = new Thread(highVolumeAccount != null ? highVolumeAccount : this);
+        t.start();
     }
 
     @Override
@@ -21,9 +22,9 @@ public class AccountWorker implements Runnable {
         int amount = 100;
 
         if (transactionType == 'w') {
-            ba.withdrawal(amount);
+            bankAccount.withdrawal(amount);
         } else {
-            ba.deposit(amount);
+            bankAccount.deposit(amount);
         }
     }
 }
