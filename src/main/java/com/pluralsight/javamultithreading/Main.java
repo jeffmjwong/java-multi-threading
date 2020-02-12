@@ -1,5 +1,6 @@
 package com.pluralsight.javamultithreading;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -21,11 +22,23 @@ public class Main {
 //        fieldInfo(account);
 //        callGetId(account);
 //        callDeposit(account, 50);
+        System.out.println(account.getBalance());
         startWork("com.pluralsight.javamultithreading.AccountWorker", account);
+        System.out.println(account.getBalance());
     }
 
     private static void startWork(String workerTypeName, Object workerTarget) {
+        try {
+            Class<?> workerType = Class.forName(workerTypeName);
+            Class<?> targetType = workerTarget.getClass();
+            final Constructor<?> c = workerType.getConstructor(targetType);
+            final Object worker = c.newInstance(workerTarget);
+            final Method doWork = workerType.getMethod("doWork");
 
+            doWork.invoke(worker);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void callDeposit(Object obj, int amount) {

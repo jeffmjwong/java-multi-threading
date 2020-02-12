@@ -21,7 +21,7 @@ public class AccountWorker implements Runnable {
         char transactionType = 'd';
         int amount = 100;
 
-        if (transactionType == 'w') {
+        if (transactionType == 'd') {
             bankAccount.withdrawal(amount);
         } else {
             bankAccount.deposit(amount);
