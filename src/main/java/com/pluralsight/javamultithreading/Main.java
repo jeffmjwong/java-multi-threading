@@ -20,8 +20,12 @@ public class Main {
 //        typeModifiers(account);
 //        fieldInfo(account);
 //        callGetId(account);
-        callDeposit(account, 50);
-        System.out.println("Balance: " + account.getBalance());
+//        callDeposit(account, 50);
+        startWork("com.pluralsight.javamultithreading.AccountWorker", account);
+    }
+
+    private static void startWork(String workerTypeName, Object workerTarget) {
+
     }
 
     private static void callDeposit(Object obj, int amount) {
