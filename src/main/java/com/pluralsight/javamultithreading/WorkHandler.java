@@ -1,4 +1,5 @@
 package com.pluralsight.javamultithreading;
 
-public interface WorkHandler {
+public @interface WorkHandler {
+    boolean useThreadPool();
 }
