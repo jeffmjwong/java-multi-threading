@@ -1,6 +1,6 @@
 package com.pluralsight.javamultithreading;
 
-@WorkHandler(useThreadPool = false)
+@WorkHandler
 public class AccountWorker implements Runnable, TaskWorker {
     BankAccount bankAccount;
 
