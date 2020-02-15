@@ -26,8 +26,24 @@ public class Main {
         startWorkSelfContained(account);
     }
 
-    private static void startWorkSelfContained(BankAccount account) {
+    private static void startWorkSelfContained(Object workerTarget) {
+        try {
+            final Class<?> targetType = workerTarget.getClass();
+            final ProcessedBy pb = targetType.getAnnotation(ProcessedBy.class);
+            final Class<?> workerType = pb.value();
+            final TaskWorker worker = (TaskWorker) workerType.newInstance();
 
+            worker.setTarget(workerTarget);
+
+            final WorkHandler wh = workerType.getAnnotation(WorkHandler.class);
+            if (wh == null) {
+                throw new IllegalArgumentException("No WorkHandler interface available!");
+            }
+
+            worker.doWork();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void startWork(String workerTypeName, Object workerTarget) {
