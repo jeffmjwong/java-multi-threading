@@ -1,7 +1,9 @@
 package com.pluralsight.javamultithreading;
 
+import java.io.Serializable;
+
 @ProcessedBy(AccountWorker.class)
-public class BankAccount {
+public class BankAccount implements Serializable {
     private final String id;
     private int balance = 0;
 
