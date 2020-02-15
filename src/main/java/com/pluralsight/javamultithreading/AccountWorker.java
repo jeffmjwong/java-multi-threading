@@ -2,10 +2,8 @@ package com.pluralsight.javamultithreading;
 
 @WorkHandler(useThreadPool = false)
 public class AccountWorker implements Runnable, TaskWorker {
-    @WorkHandler(useThreadPool = false)
     BankAccount bankAccount;
 
-    @WorkHandler(useThreadPool = false)
     @Override
     public void setTarget(Object target) {
         if (target instanceof BankAccount) {
