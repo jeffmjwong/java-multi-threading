@@ -22,7 +22,12 @@ public class Main {
 //        fieldInfo(account);
 //        callGetId(account);
 //        callDeposit(account, 50);
-        startWork("com.pluralsight.javamultithreading.AccountWorker", account);
+//        startWork("com.pluralsight.javamultithreading.AccountWorker", account);
+        startWorkSelfContained(account);
+    }
+
+    private static void startWorkSelfContained(BankAccount account) {
+
     }
 
     private static void startWork(String workerTypeName, Object workerTarget) {
