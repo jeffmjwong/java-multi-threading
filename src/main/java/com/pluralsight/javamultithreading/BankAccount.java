@@ -1,5 +1,6 @@
 package com.pluralsight.javamultithreading;
 
+@ProcessedBy(AccountWorker.class)
 public class BankAccount {
     private final String id;
     private int balance = 0;

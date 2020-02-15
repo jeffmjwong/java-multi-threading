@@ -22,9 +22,7 @@ public class Main {
 //        fieldInfo(account);
 //        callGetId(account);
 //        callDeposit(account, 50);
-        System.out.println(account.getBalance());
-        startWork("AccountWorker", account);
-        System.out.println(account.getBalance());
+        startWork("com.pluralsight.javamultithreading.AccountWorker", account);
     }
 
     private static void startWork(String workerTypeName, Object workerTarget) {
@@ -36,10 +34,6 @@ public class Main {
             final WorkHandler wh = workerType.getAnnotation(WorkHandler.class);
             if (wh == null) {
                 throw new IllegalArgumentException("No WorkHandler interface available!");
-            }
-
-            if (wh.useThreadPool()) {
-                System.out.println("Use some thread pool!");
             }
 
             worker.doWork();
