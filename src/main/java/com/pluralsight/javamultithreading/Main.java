@@ -34,6 +34,9 @@ public class Main {
             worker.setTarget(workerTarget);
 
             final WorkHandler wh = workerType.getAnnotation(WorkHandler.class);
+            if (wh == null) {
+                throw new IllegalArgumentException("No WorkHandler interface available!");
+            }
 
             if (wh.useThreadPool()) {
                 System.out.println("Use some thread pool!");
