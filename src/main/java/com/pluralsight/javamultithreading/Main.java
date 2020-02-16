@@ -1,5 +1,6 @@
 package com.pluralsight.javamultithreading;
 
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -22,6 +23,9 @@ public class Main {
         BankAccount account = new BankAccount("1", 500);
         account.deposit(300);
         saveAccount(account, "account.dat");
+        BankAccount account2 = loadAccount("account.dat");
+        System.out.println(account2.getBalance());
+        System.out.println(account2.getId());
 //        classInfo(account);
 //        typeModifiers(account);
 //        fieldInfo(account);
@@ -32,7 +36,15 @@ public class Main {
     }
 
     private static BankAccount loadAccount(String filename) {
+        BankAccount bankAccount = null;
 
+        try (ObjectInputStream objectStream = new ObjectInputStream(Files.newInputStream(Paths.get(filename)))) {
+            bankAccount = (BankAccount) objectStream.readObject();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return bankAccount;
     }
 
     private static void saveAccount(BankAccount bankAccount, String filename) {
