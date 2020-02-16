@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class AccountGroup implements Serializable {
     private Map<String, BankAccount> accountMap = new HashMap<>();
-    private int totalBalance;
+    private transient int totalBalance;
 
     public int getTotalBalance() {
         return totalBalance;
