@@ -17,13 +17,15 @@ public class Main {
 //        runBankAccounts();
 
         BankAccount account = new BankAccount("1", 500);
+        account.deposit(300);
+        saveAccount(account, "account.dat");
 //        classInfo(account);
 //        typeModifiers(account);
 //        fieldInfo(account);
 //        callGetId(account);
 //        callDeposit(account, 50);
 //        startWork("com.pluralsight.javamultithreading.AccountWorker", account);
-        startWorkSelfContained(account);
+//        startWorkSelfContained(account);
     }
 
     private static void startWorkSelfContained(Object workerTarget) {
