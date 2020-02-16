@@ -41,6 +41,21 @@ public class Main {
         accountGroup.addAccount(account2);
 
         saveGroup(accountGroup, "group.dat");
+
+        AccountGroup accountGroup2 = loadGroup("group.dat");
+        System.out.println(accountGroup2.getTotalBalance());
+    }
+
+    private static AccountGroup loadGroup(String filename) {
+        AccountGroup accountGroup = null;
+
+        try (ObjectInputStream objectStream = new ObjectInputStream(Files.newInputStream(Paths.get(filename)))) {
+            accountGroup = (AccountGroup) objectStream.readObject();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return accountGroup;
     }
 
     private static void saveGroup(AccountGroup accountGroup, String filename) {
