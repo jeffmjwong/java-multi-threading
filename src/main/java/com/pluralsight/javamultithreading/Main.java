@@ -31,6 +31,10 @@ public class Main {
 //        startWorkSelfContained(account);
     }
 
+    private static BankAccount loadAccount(String filename) {
+
+    }
+
     private static void saveAccount(BankAccount bankAccount, String filename) {
         try(ObjectOutputStream objectStream = new ObjectOutputStream(Files.newOutputStream(Paths.get(filename)))) {
             objectStream.writeObject(bankAccount);
