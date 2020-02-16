@@ -1,9 +1,12 @@
 package com.pluralsight.javamultithreading;
 
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -26,6 +29,14 @@ public class Main {
 //        callDeposit(account, 50);
 //        startWork("com.pluralsight.javamultithreading.AccountWorker", account);
 //        startWorkSelfContained(account);
+    }
+
+    private static void saveAccount(BankAccount bankAccount, String filename) {
+        try(ObjectOutputStream objectStream = new ObjectOutputStream(Files.newOutputStream(Paths.get(filename)))) {
+            objectStream.writeObject(bankAccount);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void startWorkSelfContained(Object workerTarget) {
