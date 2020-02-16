@@ -6,8 +6,7 @@ import java.io.Serializable;
 public class BankAccount implements Serializable {
     private final String id;
     private int balance = 0;
-    private char lastTransactionType;
-    private int lastTransactionAmount;
+    private static final long serialVersionUID = 8749334147585202509L;
 
     public String getId() {
         return id;
@@ -26,13 +25,9 @@ public class BankAccount implements Serializable {
 
     public void deposit(int amount) {
         balance += amount;
-        lastTransactionType = 'd';
-        lastTransactionAmount = amount;
     }
 
     public void withdrawal(int amount) {
         balance -= amount;
-        lastTransactionType = 'w';
-        lastTransactionAmount = amount;
     }
 }

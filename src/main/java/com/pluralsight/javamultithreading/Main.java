@@ -23,9 +23,9 @@ public class Main {
         BankAccount account = new BankAccount("1", 500);
         account.deposit(300);
         saveAccount(account, "account.dat");
-        BankAccount account2 = loadAccount("account.dat");
-        System.out.println(account2.getBalance());
-        System.out.println(account2.getId());
+//        BankAccount account2 = loadAccount("account.dat");
+//        System.out.println(account2.getBalance());
+//        System.out.println(account2.getId());
 //        classInfo(account);
 //        typeModifiers(account);
 //        fieldInfo(account);
