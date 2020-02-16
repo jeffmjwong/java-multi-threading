@@ -23,9 +23,9 @@ public class Main {
 //        BankAccount account = new BankAccount("1", 500);
 //        account.deposit(300);
 //        saveAccount(account, "account.dat");
-        BankAccount account2 = loadAccount("account.dat");
-        System.out.println(account2.getBalance());
-        System.out.println(account2.getId());
+//        BankAccount account2 = loadAccount("account.dat");
+//        System.out.println(account2.getBalance());
+//        System.out.println(account2.getId());
 //        classInfo(account);
 //        typeModifiers(account);
 //        fieldInfo(account);
@@ -33,6 +33,22 @@ public class Main {
 //        callDeposit(account, 50);
 //        startWork("com.pluralsight.javamultithreading.AccountWorker", account);
 //        startWorkSelfContained(account);
+
+        BankAccount account1 = new BankAccount("1", 500);
+        BankAccount account2 = new BankAccount("2", 200);
+        AccountGroup accountGroup = new AccountGroup();
+        accountGroup.addAccount(account1);
+        accountGroup.addAccount(account2);
+
+        saveGroup(accountGroup, "group.dat");
+    }
+
+    private static void saveGroup(AccountGroup accountGroup, String filename) {
+        try (ObjectOutputStream objectStream = new ObjectOutputStream(Files.newOutputStream(Paths.get(filename)))) {
+            objectStream.writeObject(accountGroup);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static BankAccount loadAccount(String filename) {
